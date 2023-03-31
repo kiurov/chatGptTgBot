@@ -5,3 +5,9 @@ This code is used to work with chatgpt via the telegram bot. This code was provi
 `telegramBotToken = '<telegramBotToken>'`
 
 `openai.api_key = '<openAiToken>'`
+
+`sudo apt-get install python3-pip`
+
+`pip install openai`
+
+`pip install aiogram`

@@ -5,8 +5,8 @@ from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
 
-telegramBotToken = '5842336746:AAG9ZTvZo-voV0m8QurgEgOwaJ0LSs-z5lI'
-openai.api_key = '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'
+telegramBotToken = '<telegramBotToken>'
+openai.api_key = '<openAiToken>'
 
 bot = Bot(telegramBotToken)
 dp = Dispatcher(bot)

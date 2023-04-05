@@ -4,9 +4,10 @@ from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
 
-
-telegramBotToken = '<telegramBotToken>'
-openai.api_key = '<openAiToken>'
+#telegramBotToken = '<telegramBotToken>'
+telegramBotToken = os.environ["telegramBotToken"]
+#openai.api_key = '<openAiToken>'
+openai.api_key = os.environ["openAiApiKey"]
 
 bot = Bot(telegramBotToken)
 dp = Dispatcher(bot)
@@ -14,7 +15,7 @@ dp = Dispatcher(bot)
 @dp.message_handler()
 async def send(message: types.Message):
     response = openai.Completion.create(
-        model="gpt-3.5-turbo",
+        model="text-davinci-003",
         prompt=message.text,
         temperature=0.9,
         max_tokens=4000,

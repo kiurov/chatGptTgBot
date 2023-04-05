@@ -5,6 +5,6 @@ export telegramBotToken=$tgBotToken
 read -p "Type your OpenAI API Key: " openAiApi
 export openAiApiKey=$openAiApi
 
-python3 main.py &
+python3 main.py
 
 exit 0

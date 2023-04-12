@@ -14,7 +14,7 @@ openai.api_key = os.environ["openAiApiKey"]
 
 # Define the bot's message handler
 @bot.message_handler(commands=['start','help'])
-def send_welcome(message)
+def send_welcome(message):
     bot.reply_to(message, "Hi, I am an AI-powered bot. Ask me a question and i will do my best to answer it!")
 
 # Define the bot's response handler

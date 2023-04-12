@@ -7,4 +7,6 @@ export openAiApiKey=$openAiApi
 
 python3 chatGptTgBot.py &
 
-exit 0
+echo
+echo "Done! Process ID is:"
+ps -aef | gawk '$NF~"^chatGptTgBot.py"{print $2,$NF}'

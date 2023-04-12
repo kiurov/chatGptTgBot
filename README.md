@@ -8,4 +8,4 @@ To use run the command: `./chatGptTgBot.sh` or `bash chatGptTgBot.sh`
 
 `pip install openai`
 
-`pip install aiogram`
+`pip install telebot`

@@ -1,30 +1,33 @@
+# Import the necessary libraries
+import telebot
 import openai
 import os
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
-from aiogram.utils import executor
 
-#telegramBotToken = '<telegramBotToken>'
+# Define the bot token
 telegramBotToken = os.environ["telegramBotToken"]
-#openai.api_key = '<openAiToken>'
+
+# Create the bot instance
+bot = telebot.TeleBot(telegramBotToken)
+
+# Define the OpenAI API key
 openai.api_key = os.environ["openAiApiKey"]
 
-bot = Bot(telegramBotToken)
-dp = Dispatcher(bot)
+# Define the bot's message handler
+@bot.message_handler(commands=['start','help'])
+def send_welcome(message)
+    bot.reply_to(message, "Hi, I am an AI-powered bot. Ask me a question and i will do my best to answer it!")
 
-@dp.message_handler()
-async def send(message: types.Message):
+# Define the bot's response handler
+@bot.message_handler(func=lambda message: True)
+def answer_question(message):
     response = openai.Completion.create(
-        model="text-davinci-003",
+        engine="text-davinci-003",
         prompt=message.text,
+        max_tokens=50,
         temperature=0.9,
-        max_tokens=4000,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.6,
-        stop=[" Human:", " AI:"]
+        top_p=1.0
     )
+    bot.reply_to(message, response['choices'][0]['text'])
 
-    await message.answer(response['choices'][0]['text'])
-
-executor.start_polling(dp, skip_updates=True)
+# Run the bot
+bot.polling()

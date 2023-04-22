@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-# Defining the Telegram Bot Token variable in the environment
-read -p "Type your Telegram Bot Token: " tgBotToken
+# Defining the Telegram Bot Token and OpenAI API Key variables in the environment
+if [ "$1" == "-n"  ]; then
+    tgBotToken=$(gawk '$1~/^tg$/{print $2}' ~/tockens)
+    openAiApi=$(gawk '$1~/^ai$/{print $2}' ~/tockens)
+else
+    read -p "Type your Telegram Bot Token: " tgBotToken
+    read -p "Type your OpenAI API Key: " openAiApi
+fi
 export telegramBotToken=$tgBotToken
-
-# Defining the OpenAI API Key variable in the environment
-read -p "Type your OpenAI API Key: " openAiApi
 export openAiApiKey=$openAiApi
 
 # Run the bot

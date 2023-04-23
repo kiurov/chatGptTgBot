@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
     export openAiApiKey=$openAiApi
 
     # Run the bot
-    python3 chatGptTgBot.py &
+    python3 chatGptTgBot.py
 
     echo
     echo "Done! Process ID is:"

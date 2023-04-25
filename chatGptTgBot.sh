@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Comment
+
 ps -aef | egrep chatGptTgBot.py | grep -v grep
 if [ $? -ne 0 ]; then 
     # Run the bot

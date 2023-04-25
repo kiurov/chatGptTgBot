@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# Comment
 ps -aef | egrep chatGptTgBot.py | grep -v grep
 if [ $? -ne 0 ]; then 
     # Run the bot
@@ -10,6 +10,3 @@ if [ $? -ne 0 ]; then
     ps -aef | gawk '$NF~"^chatGptTgBot.py"{print $2,$NF}'
     bash ~/telegramMessage/telegramMessage.sh -m "ChatGPT - KAK CHLVK was started! $(ps -aef | gawk '$NF~"^chatGptTgBot.py"{print $2,$NF}')"
 fi
-
-
-

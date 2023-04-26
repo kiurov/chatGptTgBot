@@ -2,28 +2,24 @@
 import os
 import telebot
 import openai
+from loguru import logger
 
-tockens = []
-pathToFileWithTockens = open('/home/ekonyur/tockens')
-for i in pathToFileWithTockens:
-    tockens.append(i[:-1])
-pathToFileWithTockens.close()
+logger.add('bot/logs/bot.log', format='{time:DD-MM-YY HH:mm:ss} - {level} - {message}', level='INFO', rotation='1 week', compression='zip')
 
-# Define the bot token
-#telegramBotToken = os.environ["telegramBotToken"]
-telegramBotToken = tockens[0]
 
-# Create the bot instance
-bot = telebot.TeleBot(telegramBotToken)
+# Define the bot token and create the bot instance
+bot = telebot.TeleBot(os.environ["telegramBotToken"])
 
 # Define the OpenAI API key
-#openai.api_key = os.environ["openAiApiKey"]
-openai.api_key = tockens[1]
+openai.api_key = os.environ["openAiApiKey"]
+
 
 # Define the bot's start message handler
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, "Hi, I am an AI-powered 🧠 bot. Ask me a question and I will do my best to answer it!\n\nПривет, я бот с искусственным 🧠 интеллектом. Задайте мне вопрос и я сделаю все возможное, чтобы ответить на него!")
+    # log file
+    logger.info(f"{message.from_user.id} Write: {message.text}")
 
 
 # Define the bot's response handler
@@ -37,6 +33,8 @@ def answer_question(message):
         top_p=1.0
     )
     bot.send_message(message.chat.id, response['choices'][0]['text'])
+    # log file
+    logger.info(f"{message.from_user.id} Write: {message.text}")
 
 # Run the bot
 bot.polling()

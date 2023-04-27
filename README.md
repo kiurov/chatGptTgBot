@@ -5,8 +5,8 @@ This code is used to work with chatgpt via the telegram bot. This code was provi
 To run the docker container use the command below by defining the variables `telegramBotToken` and `openAiApiKey`:
 ```
 docker run -d --pull=always --restart=unless-stopped \
---env telegramBotToken="5842336746:AAG9ZTvZo-voV0m8QurgEgOwaJ0LSs-z5lI" \
---env openAiApiKey="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" \
+--env telegramBotToken="<tgBotToken>" \
+--env openAiApiKey="<openAiKey>" \
 --name chatgpttgbotcontainer kyurov/chatgpttgbot
 ```
 

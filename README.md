@@ -13,9 +13,9 @@ docker run -d --pull=always --restart=unless-stopped \
 
 To connect inside container, use the command below the container connection
 
-`docker container exec -it chat_gpt_tg_bot_container bash`
+`docker container exec -it chatgpttgbotcontainer bash`
 
 
 To view the logs, use the command below the container connection
 
-`docker container exec -it chat_gpt_tg_bot_container cat /app/log/bot.log`
+`docker container exec -it chatgpttgbotcontainer cat /app/log/bot.log`

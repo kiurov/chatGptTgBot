@@ -19,8 +19,8 @@ openai.api_key = os.environ["openAiApiKey"]
 def start_message(message):
     bot.send_message(message.chat.id, "Hi, I am an AI-powered 🧠 bot. Ask me a question and I will do my best to answer it!\n\nПривет, я бот с искусственным 🧠 интеллектом. Задайте мне вопрос и я сделаю все возможное, чтобы ответить на него!")
     # log file
-    logger.info(f"{message.from_user.id} Write: {message.text}")
-
+    #logger.info(f"{message.from_user.id} Write: {message.text}")
+    logger.info(f"{message.from_user.username} Write: {message.text}")
 
 # Define the bot's response handler
 @bot.message_handler(func=lambda message: True)

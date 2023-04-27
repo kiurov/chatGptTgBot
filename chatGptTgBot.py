@@ -4,7 +4,7 @@ import telebot
 import openai
 from loguru import logger
 
-logger.add('bot/logs/bot.log', format='{time:DD-MM-YY HH:mm:ss} - {level} - {message}', level='INFO', rotation='1 week', compression='zip')
+logger.add('logs/bot.log', format='{time:DD-MM-YY HH:mm:ss} - {level} - {message}', level='INFO', rotation='1 week', compression='zip')
 
 
 # Define the bot token and create the bot instance

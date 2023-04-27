@@ -14,5 +14,12 @@ docker run -d \
 --restart=unless-stopped --name chat_gpt_tg_bot_container chat_gpt_tg_bot_image
 ```
 
+
+To connect inside container, use the command below the container connection
+
+`docker container exec -it chat_gpt_tg_bot_container bash`
+
+
 To view the logs, use the command below the container connection
-`docker container exec -it chat_gpt_tg_bot_container /bin/bash`
+
+`docker container exec -it chat_gpt_tg_bot_container cat /app/bot/logs/bot.log`
